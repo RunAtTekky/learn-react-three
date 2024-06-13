@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { server } from "../index";
+import { Context, server } from "../index";
 import {
   Button,
   Container,
@@ -21,7 +21,7 @@ const Coins = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
-  const [currency, setCurrency] = useState("inr");
+  const { currency, setCurrency } = useContext(Context);
 
   const btns = new Array(132).fill(1);
 

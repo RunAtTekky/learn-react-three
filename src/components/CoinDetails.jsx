@@ -16,21 +16,21 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Loader from "./Loader";
 import Chart from "./Chart";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { server } from "..";
+import { Context, server } from "../index";
 import ErrorComponent from "./ErrorComponent";
 
 const CoinDetails = () => {
   const [coin, setCoin] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [currency, setCurrency] = useState("inr");
   const [days, setDays] = useState("24h");
   const [chartArray, setChartArray] = useState([]);
+  const { currency, setCurrency } = useContext(Context);
 
   const currencySymbol =
     currency === "inr" ? "₹" : currency === "eur" ? "€" : "$";
